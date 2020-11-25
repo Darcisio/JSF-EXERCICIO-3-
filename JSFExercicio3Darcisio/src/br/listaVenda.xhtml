@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Cadastro" action="cadastroVenda.xhtml" immediate="true" />
+		<h1>Lista</h1>
+		<h:messages />
+		<h:dataTable border="1" value="#{vendaController.lista}" var="venda">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Id" />
+				</f:facet>
+				<h:outputText value="#{venda.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="descProduto" />
+				</f:facet>
+				<h:outputText value="#{venda.descProduto}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Paciente" />
+				</f:facet>
+				<h:outputText value="#{venda.paciente}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data Inicio" />
+				</f:facet>
+				<h:outputText value="#{venda.inicioProcedimento}">
+				 	<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data Fim" />
+				</f:facet>
+				<h:outputText value="#{venda.fimProcedimento}">
+				 	<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Exames" />
+				</f:facet>
+				<h:outputText value="#{venda.qtdExames}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor unitário" />
+				</f:facet>
+				<h:outputText value="#{venda.valor}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Desconto" />
+				</f:facet>
+				<h:outputText value="#{venda.desconto}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor total" />
+				</f:facet>
+				<h:outputText value="#{venda.valorTotal}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ação" />
+				</f:facet>
+				<h:commandButton value="Editar" action="#{vendaController.editar}">
+					<f:setPropertyActionListener 
+						value="#{venda}" 
+						target="#{vendaController.venda}" />
+				</h:commandButton>
+				<h:commandButton value="Excluir" action="#{vendaController.excluir}" onclick="return confirm('Confirma a exclusão ?')">
+					<f:setPropertyActionListener 
+						value="#{venda}" 
+						target="#{vendaController.venda}" />
+				</h:commandButton>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Lista" action="listaVenda.xhtml" immediate="true" />
+		<h1>Cadastro</h1>
+		<h:messages />
+		<h:panelGrid columns="2">
+			<h:outputText value="Descrição do Produto: *" />
+			<h:inputText value="#{vendaController.venda.descProduto}"
+				required="true"
+				requiredMessage="O campo produto é obrigtório!">
+				<f:validateLength minimum="3" maximum="30" />
+			</h:inputText>
+			<h:outputText value="Paciente: *" />
+			<h:inputText value="#{vendaController.venda.paciente}"
+				required="true"
+				requiredMessage="O campo paciente é obrigatório!">
+				<f:validateLongRange minimum="1" maximum="100" />
+			</h:inputText>
+			<h:outputText value="Quantidade de Exames: *" />
+			<h:inputText value="#{vendaController.venda.qtdExames}"
+				required="true"
+				requiredMessage="O campo exames é obrigátorio!">
+				<f:validateDoubleRange minimum="1" maximum="100" />
+			</h:inputText>
+			<h:outputText value="Valor: *" />
+			<h:inputText value="#{vendaController.venda.valor}"
+				required="true"
+				requiredMessage="O campo valor é obrigátorio!">
+				<f:validateDoubleRange minimum="1" maximum="9000" />
+			</h:inputText>
+			<h:outputText value="Inicio Procedimento: *" />
+			<h:inputText value="#{vendaController.venda.inicioProcedimento}"
+				required="true"
+				requiredMessage="O campo data é obrigatório!">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</h:inputText>
+			<h:outputText value="Fim Procedimento: *" />
+			<h:inputText value="#{vendaController.venda.fimProcedimento}"
+				required="true"
+				requiredMessage="O campo data é obrigatório!">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</h:inputText>	
+			<h:commandButton value="Salvar" action="#{vendaController.salvar}" />	
+		</h:panelGrid>
+	</h:form>
+</h:body>
+
+</html>
